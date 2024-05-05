@@ -10,6 +10,7 @@
         "prepare": "husky"
     },
     "dependencies": {
+        "classnames": "^2.5.1",
         "next": "14.2.3",
         "react": "^18",
         "react-dom": "^18"
@@ -25,6 +26,7 @@
         "lint-staged": "^15.2.2",
         "postcss": "^8",
         "prettier": "3.2.5",
+        "prettier-plugin-tailwindcss": "^0.5.14",
         "tailwindcss": "^3.4.1",
         "typescript": "^5"
     },

@@ -1,4 +1,5 @@
 import { AnimationProps } from '@/types/app/page.types';
+import { ANIMATION_TYPES } from '@/app/page';
 
 export default function quickSort(list: number[], animationProps: AnimationProps): number[] {
     if (list.length <= 1) {
@@ -8,7 +9,7 @@ export default function quickSort(list: number[], animationProps: AnimationProps
 
     let pivot = list[0];
     steps.push({
-        type: 'HIGHLIGHT',
+        type: ANIMATION_TYPES.HIGHLIGHT,
         index: startWindow,
     });
     let leftArr = [];
@@ -18,14 +19,22 @@ export default function quickSort(list: number[], animationProps: AnimationProps
         if (list[i] < pivot) {
             leftArr.push(list[i]);
             steps.push({
-                type: 'MOVE',
+                type: ANIMATION_TYPES.HIGHLIGHT_SECONDARY,
+                index: startWindow + i,
+            });
+            steps.push({
+                type: ANIMATION_TYPES.MOVE,
                 fromIndex: startWindow + i,
                 toIndex: startWindow + leftArr.length - 1,
             });
         } else {
             rightArr.push(list[i]);
             steps.push({
-                type: 'MOVE',
+                type: ANIMATION_TYPES.HIGHLIGHT_SECONDARY,
+                index: startWindow + i,
+            });
+            steps.push({
+                type: ANIMATION_TYPES.MOVE,
                 fromIndex: startWindow + i,
                 toIndex: startWindow + leftArr.length + rightArr.length,
             });
@@ -33,7 +42,7 @@ export default function quickSort(list: number[], animationProps: AnimationProps
     }
 
     steps.push({
-        type: 'END_CYCLE',
+        type: ANIMATION_TYPES.END_CYCLE,
     });
 
     return [

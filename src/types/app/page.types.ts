@@ -1,26 +1,29 @@
+import { ANIMATION_TYPES } from '@/app/page';
+
 export type GraphListItem = {
     value: number;
     isHighlighted: boolean;
+    isSecondaryHighlighted: boolean;
 };
 
 export type AnimationStep =
     | {
-          type: 'HIGHLIGHT';
+          type: ANIMATION_TYPES.HIGHLIGHT | ANIMATION_TYPES.HIGHLIGHT_SECONDARY;
           index: number;
       }
     | {
-          type: 'MOVE';
+          type: ANIMATION_TYPES.MOVE;
           fromIndex: number;
           toIndex: number;
       }
     | {
-          type: 'END_CYCLE';
+          type: ANIMATION_TYPES.END_CYCLE;
       }
     | {
-          type: 'START_SORT';
+          type: ANIMATION_TYPES.START_SORT;
       }
     | {
-          type: 'END_SORT';
+          type: ANIMATION_TYPES.END_SORT;
       };
 
 export type AnimationProps = {

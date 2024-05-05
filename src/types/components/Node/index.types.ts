@@ -1,7 +1,6 @@
+import { GraphListItem } from '@/types/app/page.types';
+
 export type NodeProps = {
     windowHeight: number;
-    state: {
-        isHighlighted: boolean;
-        value: number;
-    };
+    state: GraphListItem;
 };

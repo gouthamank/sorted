@@ -23,20 +23,20 @@
 
 html,
 body {
-    font-size: 7px;
+    font-size: 12px;
 }
 
 @media (min-width: 576px) {
     html,
     body {
-        font-size: 9px;
+        font-size: 14px;
     }
 }
 
 @media (min-width: 1400px) {
     html,
     body {
-        font-size: 11px;
+        font-size: 16px;
     }
 }
 
