@@ -10,13 +10,14 @@ export default function Node(props: NodeProps) {
             className={classNames([
                 'w-2',
                 {
-                    'bg-blue-200': hasNoHighlight && !props.state.isHighlighted,
+                    'bg-blue-300': hasNoHighlight,
+                    'opacity-80': hasNoHighlight,
                 },
                 {
-                    'bg-blue-500': !hasNoHighlight && props.state.isHighlighted,
+                    'bg-blue-600': !hasNoHighlight && props.state.isHighlighted,
                 },
                 {
-                    'bg-green-400': !hasNoHighlight && props.state.isSecondaryHighlighted,
+                    'bg-green-600': !hasNoHighlight && props.state.isSecondaryHighlighted,
                 },
             ])}
             style={{

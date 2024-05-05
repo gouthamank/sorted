@@ -1,7 +1,7 @@
-import { AnimationProps } from '@/types/app/page.types';
+import { QuickSortAnimationProps } from '@/types/app/page.types';
 import { ANIMATION_TYPES } from '@/app/page';
 
-export default function quickSort(list: number[], animationProps: AnimationProps): number[] {
+export default function quickSort(list: number[], animationProps: QuickSortAnimationProps): number[] {
     if (list.length <= 1) {
         return list;
     }

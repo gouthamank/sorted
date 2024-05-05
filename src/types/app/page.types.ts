@@ -28,5 +28,12 @@ export type AnimationStep =
 
 export type AnimationProps = {
     steps: AnimationStep[];
+};
+
+export type QuickSortAnimationProps = AnimationProps & {
+    startWindow?: number;
+};
+
+export type MergeSortAnimationProps = AnimationProps & {
     startWindow?: number;
 };

@@ -1,11 +1,11 @@
 export type SelectProps = {
     name?: string;
     items: SelectItem[];
-    onChange?: (value: string | number) => void;
+    onChange?: (value: string) => void;
     disabled?: boolean;
 };
 
 export type SelectItem = {
-    value: number | string;
+    value: string;
     label: string;
 };
