@@ -1,0 +1,33 @@
+.ui-select {
+    > .chevron {
+        top: calc(1.25rem - 0.25rem);
+        right: calc(1rem - 0.2rem);
+        border-left: 0.4rem solid transparent;
+        border-right: 0.4rem solid transparent;
+        border-top: 0.5rem solid rgb(var(--steel-blue-600-rgb));
+    }
+}
+
+.ui-select:hover:not(.ui-select_disabled) {
+    > .chevron {
+        border-top: 0.5rem solid rgb(var(--steel-blue-500-rgb));
+    }
+}
+
+.ui-select {
+    &_disabled {
+        > .chevron {
+            border-top: 0.5rem solid rgb(var(--steel-blue-200-rgb));
+        }
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .ui-select {
+        &_disabled {
+            > .chevron {
+                border-top: 0.5rem solid rgb(var(--steel-blue-800-rgb));
+            }
+        }
+    }
+}

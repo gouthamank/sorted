@@ -6,7 +6,12 @@ import { ANIMATION_SPEED, ARRAY_LENGTHS, SORT_TYPES } from '@/utils/enums';
 export default function Header(props: HeaderProps) {
     return (
         <header className='flex h-20 items-center justify-between gap-4 px-10 py-0'>
-            <Button onClick={props.onRandomiseClicked} label='Randomise' disabled={props.sortInProgress} />
+            <Button
+                onClick={props.onRandomiseClicked}
+                label='Randomise'
+                variant={'secondary'}
+                disabled={props.sortInProgress}
+            />
             <Select
                 onChange={props.onArraySizeChanged}
                 items={[
@@ -64,11 +69,7 @@ export default function Header(props: HeaderProps) {
                 name='Sort'
                 disabled={props.sortInProgress}
             />
-            <Button
-                onClick={props.onSortClicked}
-                label={props.sortInProgress ? 'Sorting' : 'Sort'}
-                disabled={props.sortInProgress}
-            />
+            <Button onClick={props.onSortClicked} label={'Sort'} disabled={props.sortInProgress} />
         </header>
     );
 }

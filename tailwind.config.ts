@@ -9,9 +9,21 @@ const config: Config = {
     ],
     theme: {
         extend: {
-            backgroundImage: {
-                'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+            colors: {
+                'steel-blue': {
+                    '50': '#f1f8fd',
+                    '100': '#e0eff9',
+                    '200': '#c8e3f5',
+                    '300': '#a3d1ed',
+                    '400': '#77b8e3',
+                    '500': '#579dda',
+                    DEFAULT: '#4283cd',
+                    '600': '#4283cd',
+                    '700': '#396fbc',
+                    '800': '#345c99',
+                    '900': '#2e4e7a',
+                    '950': '#20314b',
+                },
             },
         },
     },

@@ -5,15 +5,26 @@
 :root {
     min-height: 100vh;
     --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 214, 219, 220;
-    --background-end-rgb: 255, 255, 255;
+    --steel-blue-50-rgb: 241 248 253;
+    --steel-blue-100-rgb: 224 239 249;
+    --steel-blue-200-rgb: 200 227 245;
+    --steel-blue-300-rgb: 163 209 237;
+    --steel-blue-400-rgb: 119 184 227;
+    --steel-blue-500-rgb: 87 157 218;
+    --steel-blue-600-rgb: 66 131 205;
+    --steel-blue-700-rgb: 57 111 188;
+    --steel-blue-800-rgb: 52 92 153;
+    --steel-blue-900-rgb: 46 78 122;
+    --steel-blue-950-rgb: 32 49 75;
+    --background-start-rgb: var(--steel-blue-50-rgb);
+    --background-end-rgb: var(--steel-blue-200-rgb);
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --foreground-rgb: 255, 255, 255;
-        --background-start-rgb: 0, 0, 0;
-        --background-end-rgb: 0, 0, 0;
+        --background-start-rgb: 10, 10, 16;
+        --background-end-rgb: 20, 20, 26;
     }
 }
 
