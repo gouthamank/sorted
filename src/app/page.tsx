@@ -4,21 +4,29 @@ import { useCallback, useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import NodeContainer from '@/components/NodeContainer';
 import quickSort from '@/sorting/quicksort';
+import mergeSort from '@/sorting/mergesort';
+import heapSort from '@/sorting/heapsort';
 import { playAnimations } from '@/sorting/animations';
 import { getRandomInt } from '@/utils';
 
 import { AnimationStep, GraphListItem } from '@/types/app/page.types';
-import mergeSort from '@/sorting/mergesort';
 
 export enum SORT_TYPES {
     'QUICKSORT' = 'quicksort',
     'MERGESORT' = 'mergesort',
+    'HEAPSORT' = 'heapsort',
 }
 
 export enum ARRAY_LENGTHS {
     'SMALL' = '25',
     'MEDIUM' = '50',
     'LARGE' = '75',
+}
+
+export enum ANIMATION_SPEED {
+    'SLOW' = '80',
+    'MODERATE' = '15',
+    'FAST' = '5',
 }
 
 export enum ANIMATION_TYPES {
@@ -34,6 +42,7 @@ export default function Home() {
     const [list, setList] = useState<GraphListItem[]>([]);
     const [arrayLength, setArrayLength] = useState<number>(Number.parseInt(ARRAY_LENGTHS.SMALL));
     const [sortType, setSortType] = useState<SORT_TYPES>(SORT_TYPES.QUICKSORT);
+    const [sortSpeed, setSortSpeed] = useState<ANIMATION_SPEED>(ANIMATION_SPEED.FAST);
     const [sortInProgress, setSortInProgress] = useState<boolean>(false);
 
     const handleRandomise = useCallback(() => {
@@ -66,6 +75,9 @@ export default function Home() {
             case SORT_TYPES.MERGESORT:
                 mergeSort(listToSort, { steps });
                 break;
+            case SORT_TYPES.HEAPSORT:
+                heapSort(listToSort, { steps });
+                break;
             default:
                 console.log('>>', 'in break', sortType);
                 break;
@@ -73,8 +85,9 @@ export default function Home() {
         steps.push({
             type: ANIMATION_TYPES.END_SORT,
         });
-        await playAnimations(steps, setList, setSortInProgress);
-    }, [list, sortType]);
+        console.log(steps);
+        await playAnimations(sortSpeed, steps, setList, setSortInProgress);
+    }, [list, sortType, sortSpeed]);
 
     const handleSortMethodChanged = useCallback((newSortMethod: SORT_TYPES) => {
         setSortType(newSortMethod);
@@ -88,6 +101,10 @@ export default function Home() {
         [handleRandomise],
     );
 
+    const handleAnimationSpeedChanged = useCallback((newAnimationSpeed: ANIMATION_SPEED) => {
+        setSortSpeed(newAnimationSpeed);
+    }, []);
+
     useEffect(() => {
         handleRandomise();
     }, [handleRandomise]);
@@ -100,6 +117,7 @@ export default function Home() {
                 onSortClicked={handleSort}
                 onSortMethodChanged={handleSortMethodChanged}
                 onArraySizeChanged={handleArraySizeChanged}
+                onAnimationSpeedChanged={handleAnimationSpeedChanged}
             />
             <main
                 style={{

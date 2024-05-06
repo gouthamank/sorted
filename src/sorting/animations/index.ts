@@ -1,14 +1,16 @@
 import { AnimationStep, GraphListItem } from '@/types/app/page.types';
 import { Dispatch, SetStateAction } from 'react';
-import { ANIMATION_TYPES } from '@/app/page';
+import { ANIMATION_SPEED, ANIMATION_TYPES } from '@/app/page';
 
 export async function playAnimations(
+    animationSpeed: ANIMATION_SPEED,
     steps: AnimationStep[],
     setList: Dispatch<SetStateAction<GraphListItem[]>>,
     setSortInProgress: Dispatch<SetStateAction<boolean>>,
 ) {
     setSortInProgress(true);
-    const delay = () => new Promise(resolve => setTimeout(resolve, 10));
+    const postMoveAnimDelay = () => new Promise(resolve => setTimeout(resolve, Number.parseInt(animationSpeed)));
+    const postHighlightAnimDelay = () => new Promise(resolve => setTimeout(resolve, 0));
     for (let i = 0; i < steps.length; i++) {
         const step = steps[i];
         switch (step.type) {
@@ -22,7 +24,7 @@ export async function playAnimations(
                         };
                     });
                 });
-                await delay();
+                await postHighlightAnimDelay();
                 break;
             case ANIMATION_TYPES.HIGHLIGHT:
                 setList(oldList => {
@@ -40,7 +42,7 @@ export async function playAnimations(
                         }
                     });
                 });
-                await delay();
+                await postHighlightAnimDelay();
                 break;
             case ANIMATION_TYPES.HIGHLIGHT_SECONDARY:
                 setList(oldList => {
@@ -58,7 +60,7 @@ export async function playAnimations(
                         }
                     });
                 });
-                await delay();
+                await postHighlightAnimDelay();
                 break;
             case ANIMATION_TYPES.MOVE:
                 const startIndex = step.fromIndex;
@@ -70,7 +72,7 @@ export async function playAnimations(
                     newList.splice(endIndex, 0, elementToMove);
                     return newList;
                 });
-                await delay();
+                await postMoveAnimDelay();
         }
     }
     setSortInProgress(false);

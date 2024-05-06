@@ -1,7 +1,7 @@
 import type { HeaderProps } from '@/types/components/Header/index.types';
 import Button from '@/ui/Button';
 import Select from '@/ui/Select';
-import { ARRAY_LENGTHS, SORT_TYPES } from '@/app/page';
+import { ANIMATION_SPEED, ARRAY_LENGTHS, SORT_TYPES } from '@/app/page';
 
 export default function Header(props: HeaderProps) {
     return (
@@ -27,6 +27,25 @@ export default function Header(props: HeaderProps) {
                 disabled={props.sortInProgress}
             />
             <Select
+                onChange={props.onAnimationSpeedChanged}
+                items={[
+                    {
+                        label: 'Fast',
+                        value: ANIMATION_SPEED.FAST,
+                    },
+                    {
+                        label: 'Moderate',
+                        value: ANIMATION_SPEED.MODERATE,
+                    },
+                    {
+                        label: 'Slow',
+                        value: ANIMATION_SPEED.SLOW,
+                    },
+                ]}
+                name='Speed'
+                disabled={props.sortInProgress}
+            />
+            <Select
                 onChange={props.onSortMethodChanged}
                 items={[
                     {
@@ -36,6 +55,10 @@ export default function Header(props: HeaderProps) {
                     {
                         label: 'Merge Sort',
                         value: SORT_TYPES.MERGESORT,
+                    },
+                    {
+                        label: 'Heap Sort',
+                        value: SORT_TYPES.HEAPSORT,
                     },
                 ]}
                 name='Sort'

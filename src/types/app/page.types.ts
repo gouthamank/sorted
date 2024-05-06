@@ -37,3 +37,5 @@ export type QuickSortAnimationProps = AnimationProps & {
 export type MergeSortAnimationProps = AnimationProps & {
     startWindow?: number;
 };
+
+export type HeapSortAnimationProps = AnimationProps;
