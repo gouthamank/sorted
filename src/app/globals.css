@@ -37,14 +37,14 @@ body {
     font-size: 12px;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 580px) {
     html,
     body {
         font-size: 14px;
     }
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1536px) {
     html,
     body {
         font-size: 16px;
@@ -60,4 +60,8 @@ body {
     .text-balance {
         text-wrap: balance;
     }
+}
+
+.disable-scroll {
+    overflow: hidden !important;
 }

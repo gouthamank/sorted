@@ -9,6 +9,13 @@ const config: Config = {
     ],
     theme: {
         extend: {
+            screens: {
+                sm: '370px',
+                md: '580px',
+                lg: '870px',
+                xl: '1280px',
+                '2xl': '1536px',
+            },
             colors: {
                 'steel-blue': {
                     '50': '#f1f8fd',

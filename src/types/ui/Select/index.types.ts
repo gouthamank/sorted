@@ -3,6 +3,7 @@ export type SelectProps = {
     items: SelectItem[];
     onChange?: (value: string) => void;
     disabled?: boolean;
+    fullWidth?: boolean;
 };
 
 export type SelectItem = {
