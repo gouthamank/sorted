@@ -1,5 +1,6 @@
 import { MergeSortAnimationProps } from '@/types/app/page.types';
-import { ANIMATION_TYPES } from '@/app/page';
+
+import { ANIMATION_TYPES } from '@/utils/enums';
 
 function merge(left: number[], right: number[], animationProps: MergeSortAnimationProps) {
     const { steps, startWindow = 0 } = animationProps;

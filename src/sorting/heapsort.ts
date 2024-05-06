@@ -1,5 +1,6 @@
 import { HeapSortAnimationProps } from '@/types/app/page.types';
-import { ANIMATION_TYPES } from '@/app/page';
+
+import { ANIMATION_TYPES } from '@/utils/enums';
 
 function heapify(heap: number[], i: number, heapSize: number, animationProps: HeapSortAnimationProps) {
     const { steps } = animationProps;

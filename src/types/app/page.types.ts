@@ -1,4 +1,4 @@
-import { ANIMATION_TYPES } from '@/app/page';
+import { ANIMATION_TYPES } from '@/utils/enums';
 
 export type GraphListItem = {
     value: number;

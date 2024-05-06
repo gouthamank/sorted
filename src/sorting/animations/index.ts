@@ -1,6 +1,6 @@
 import { AnimationStep, GraphListItem } from '@/types/app/page.types';
 import { Dispatch, SetStateAction } from 'react';
-import { ANIMATION_SPEED, ANIMATION_TYPES } from '@/app/page';
+import { ANIMATION_SPEED, ANIMATION_TYPES } from '@/utils/enums';
 
 export async function playAnimations(
     animationSpeed: ANIMATION_SPEED,

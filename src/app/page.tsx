@@ -8,35 +8,9 @@ import mergeSort from '@/sorting/mergesort';
 import heapSort from '@/sorting/heapsort';
 import { playAnimations } from '@/sorting/animations';
 import { getRandomInt } from '@/utils';
+import { ANIMATION_SPEED, ANIMATION_TYPES, ARRAY_LENGTHS, SORT_TYPES } from '@/utils/enums';
 
 import { AnimationStep, GraphListItem } from '@/types/app/page.types';
-
-export enum SORT_TYPES {
-    'QUICKSORT' = 'quicksort',
-    'MERGESORT' = 'mergesort',
-    'HEAPSORT' = 'heapsort',
-}
-
-export enum ARRAY_LENGTHS {
-    'SMALL' = '25',
-    'MEDIUM' = '50',
-    'LARGE' = '75',
-}
-
-export enum ANIMATION_SPEED {
-    'SLOW' = '80',
-    'MODERATE' = '15',
-    'FAST' = '5',
-}
-
-export enum ANIMATION_TYPES {
-    HIGHLIGHT,
-    HIGHLIGHT_SECONDARY,
-    MOVE,
-    END_CYCLE,
-    START_SORT,
-    END_SORT,
-}
 
 export default function Home() {
     const [list, setList] = useState<GraphListItem[]>([]);

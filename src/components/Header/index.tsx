@@ -1,7 +1,7 @@
 import type { HeaderProps } from '@/types/components/Header/index.types';
 import Button from '@/ui/Button';
 import Select from '@/ui/Select';
-import { ANIMATION_SPEED, ARRAY_LENGTHS, SORT_TYPES } from '@/app/page';
+import { ANIMATION_SPEED, ARRAY_LENGTHS, SORT_TYPES } from '@/utils/enums';
 
 export default function Header(props: HeaderProps) {
     return (
