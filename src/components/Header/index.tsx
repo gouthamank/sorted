@@ -122,7 +122,14 @@ export default function Header(props: HeaderProps) {
                             variant={'secondary'}
                             disabled={props.sortInProgress}
                         />
-                        <Button onClick={props.onSortClicked} label={'Sort'} disabled={props.sortInProgress} />
+                        <Button
+                            onClick={() => {
+                                setMenuOpen(false);
+                                props.onSortClicked();
+                            }}
+                            label={'Sort'}
+                            disabled={props.sortInProgress}
+                        />
                     </div>
                 </div>
                 <div
@@ -142,10 +149,11 @@ export default function Header(props: HeaderProps) {
             </div>
             <div
                 className={classNames([
-                    'height-full width-full pointer-events-none absolute bottom-0 left-0 right-0 top-0 z-[5000] h-screen bg-black/80 transition-opacity duration-300',
-                    { 'opacity-0': !isMenuOpen },
-                    { 'opacity-100': isMenuOpen },
+                    'height-full width-full absolute bottom-0 left-0 right-0 top-0 z-[5000] h-screen bg-black/80 transition-opacity duration-300',
+                    { 'pointer-events-none opacity-0': !isMenuOpen },
+                    { 'pointer-events-all opacity-100': isMenuOpen },
                 ])}
+                onClick={() => setMenuOpen(false)}
             />
         </header>
     );
