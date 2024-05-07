@@ -69,7 +69,6 @@ export default function Home() {
         steps.push({
             type: ANIMATION_STEP_TYPES.END_SORT,
         });
-        console.log('>> steps', steps);
         await playAnimations(sortSpeed, steps, setList, setAnimationState);
     }, [list, sortType, sortSpeed]);
 
