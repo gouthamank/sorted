@@ -8,7 +8,8 @@ import mergeSort from '@/sorting/mergesort';
 import heapSort from '@/sorting/heapsort';
 import { playAnimations } from '@/sorting/animations';
 import { getRandomInt } from '@/utils';
-import { ANIMATION_SPEED, ANIMATION_TYPES, ARRAY_LENGTHS, SORT_TYPES } from '@/utils/enums';
+import { ANIMATION_SPEED, ANIMATION_STATES, ANIMATION_STEP_TYPES, ARRAY_LENGTHS, SORT_TYPES } from '@/utils/enums';
+import { MAX_NODE_VALUE } from '@/utils/constants';
 
 import { AnimationStep, GraphListItem } from '@/types/app/page.types';
 
@@ -17,9 +18,11 @@ export default function Home() {
     const [arrayLength, setArrayLength] = useState<number>(Number.parseInt(ARRAY_LENGTHS.SMALL));
     const [sortType, setSortType] = useState<SORT_TYPES>(SORT_TYPES.QUICKSORT);
     const [sortSpeed, setSortSpeed] = useState<ANIMATION_SPEED>(ANIMATION_SPEED.FAST);
-    const [sortInProgress, setSortInProgress] = useState<boolean>(false);
+    const [animationState, setAnimationState] = useState<ANIMATION_STATES>(ANIMATION_STATES.IDLE);
 
     const handleRandomise = useCallback(() => {
+        setAnimationState(ANIMATION_STATES.IDLE);
+
         let newList: GraphListItem[] = [];
         // newList = [100, 110, 90, 130, 70, 120, 80, 150].map(x => ({
         //     isHighlighted: false,
@@ -30,7 +33,7 @@ export default function Home() {
             newList.push({
                 isHighlighted: false,
                 isSecondaryHighlighted: false,
-                value: getRandomInt(1, 500),
+                value: getRandomInt(1, MAX_NODE_VALUE),
             });
         }
         setList(newList);
@@ -39,7 +42,7 @@ export default function Home() {
     const handleSort = useCallback(async () => {
         const steps: AnimationStep[] = [];
         steps.push({
-            type: ANIMATION_TYPES.START_SORT,
+            type: ANIMATION_STEP_TYPES.START_SORT,
         });
         const listToSort = list.map(x => x.value);
         switch (sortType) {
@@ -53,14 +56,12 @@ export default function Home() {
                 heapSort(listToSort, { steps });
                 break;
             default:
-                console.log('>>', 'in break', sortType);
                 break;
         }
         steps.push({
-            type: ANIMATION_TYPES.END_SORT,
+            type: ANIMATION_STEP_TYPES.END_SORT,
         });
-        console.log(steps);
-        await playAnimations(sortSpeed, steps, setList, setSortInProgress);
+        await playAnimations(sortSpeed, steps, setList, setAnimationState);
     }, [list, sortType, sortSpeed]);
 
     const handleSortMethodChanged = useCallback((newSortMethod: SORT_TYPES) => {
@@ -86,7 +87,7 @@ export default function Home() {
     return (
         <>
             <Header
-                sortInProgress={sortInProgress}
+                sortInProgress={animationState === ANIMATION_STATES.RUNNING}
                 onRandomiseClicked={handleRandomise}
                 onSortClicked={handleSort}
                 onSortMethodChanged={handleSortMethodChanged}
@@ -102,7 +103,8 @@ export default function Home() {
                     minHeight: 'calc(100vh - 10rem)',
                 }}
             >
-                <NodeContainer list={list} />
+                {animationState}
+                <NodeContainer list={list} currentState={animationState} />
                 {/*{list.length}*/}
                 {/*<pre>{JSON.stringify(list, null, 4)}</pre>*/}
             </main>

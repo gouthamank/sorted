@@ -7,7 +7,16 @@ import HamburgerButton from '@/ui/HamburgerButton';
 import classNames from 'classnames';
 
 export default function Header(props: HeaderProps) {
+    const {
+        onAnimationSpeedChanged,
+        onArraySizeChanged,
+        onSortMethodChanged,
+        onRandomiseClicked,
+        onSortClicked,
+        sortInProgress,
+    } = props;
     const [isMenuOpen, setMenuOpen] = useState(false);
+    const [isStaleSort, setIsStaleSort] = useState(false);
     const handleHamburgerClick = useCallback(() => {
         setMenuOpen(value => {
             const newValue = !value;
@@ -38,7 +47,10 @@ export default function Header(props: HeaderProps) {
             <>
                 <Select
                     fullWidth
-                    onChange={props.onArraySizeChanged}
+                    onChange={newArraySize => {
+                        setIsStaleSort(false);
+                        onArraySizeChanged(newArraySize);
+                    }}
                     items={[
                         {
                             label: `Small (${ARRAY_LENGTHS.SMALL})`,
@@ -54,11 +66,11 @@ export default function Header(props: HeaderProps) {
                         },
                     ]}
                     name='Size'
-                    disabled={props.sortInProgress}
+                    disabled={sortInProgress}
                 />
                 <Select
                     fullWidth
-                    onChange={props.onAnimationSpeedChanged}
+                    onChange={onAnimationSpeedChanged}
                     items={[
                         {
                             label: 'Fast',
@@ -74,11 +86,11 @@ export default function Header(props: HeaderProps) {
                         },
                     ]}
                     name='Speed'
-                    disabled={props.sortInProgress}
+                    disabled={sortInProgress}
                 />
                 <Select
                     fullWidth
-                    onChange={props.onSortMethodChanged}
+                    onChange={onSortMethodChanged}
                     items={[
                         {
                             label: 'Quicksort',
@@ -94,11 +106,11 @@ export default function Header(props: HeaderProps) {
                         },
                     ]}
                     name='Sort'
-                    disabled={props.sortInProgress}
+                    disabled={sortInProgress}
                 />
             </>
         );
-    }, [props.onAnimationSpeedChanged, props.onArraySizeChanged, props.onSortMethodChanged, props.sortInProgress]);
+    }, [onAnimationSpeedChanged, onArraySizeChanged, onSortMethodChanged, sortInProgress]);
 
     return (
         <header>
@@ -117,18 +129,22 @@ export default function Header(props: HeaderProps) {
                     </div>
                     <div className='main-buttons flex flex-row gap-4'>
                         <Button
-                            onClick={props.onRandomiseClicked}
+                            onClick={() => {
+                                setIsStaleSort(false);
+                                onRandomiseClicked();
+                            }}
                             label='Randomise'
                             variant={'secondary'}
-                            disabled={props.sortInProgress}
+                            disabled={sortInProgress}
                         />
                         <Button
                             onClick={() => {
+                                setIsStaleSort(true);
                                 setMenuOpen(false);
-                                props.onSortClicked();
+                                onSortClicked();
                             }}
                             label={'Sort'}
-                            disabled={props.sortInProgress}
+                            disabled={sortInProgress || isStaleSort}
                         />
                     </div>
                 </div>

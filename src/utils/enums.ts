@@ -16,11 +16,17 @@ export enum ANIMATION_SPEED {
     'FAST' = '5',
 }
 
-export enum ANIMATION_TYPES {
+export enum ANIMATION_STEP_TYPES {
     HIGHLIGHT,
     HIGHLIGHT_SECONDARY,
     MOVE,
     END_CYCLE,
     START_SORT,
     END_SORT,
+}
+
+export enum ANIMATION_STATES {
+    IDLE = 'idle',
+    RUNNING = 'running',
+    COMPLETED = 'completed',
 }

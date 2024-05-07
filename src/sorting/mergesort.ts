@@ -1,6 +1,6 @@
 import { MergeSortAnimationProps } from '@/types/app/page.types';
 
-import { ANIMATION_TYPES } from '@/utils/enums';
+import { ANIMATION_STEP_TYPES } from '@/utils/enums';
 
 function merge(left: number[], right: number[], animationProps: MergeSortAnimationProps) {
     const { steps, startWindow = 0 } = animationProps;
@@ -9,30 +9,30 @@ function merge(left: number[], right: number[], animationProps: MergeSortAnimati
         if (left[0] < right[0]) {
             arr.push(<number>left.shift());
             steps.push({
-                type: ANIMATION_TYPES.HIGHLIGHT_SECONDARY,
+                type: ANIMATION_STEP_TYPES.HIGHLIGHT_SECONDARY,
                 index: startWindow + arr.length - 1,
             });
             steps.push({
-                type: ANIMATION_TYPES.HIGHLIGHT_SECONDARY,
+                type: ANIMATION_STEP_TYPES.HIGHLIGHT_SECONDARY,
                 index: startWindow + arr.length - 1,
             });
             steps.push({
-                type: ANIMATION_TYPES.MOVE,
+                type: ANIMATION_STEP_TYPES.MOVE,
                 fromIndex: startWindow + arr.length - 1,
                 toIndex: startWindow + arr.length - 1,
             });
         } else {
             arr.push(<number>right.shift());
             steps.push({
-                type: ANIMATION_TYPES.HIGHLIGHT_SECONDARY,
+                type: ANIMATION_STEP_TYPES.HIGHLIGHT_SECONDARY,
                 index: startWindow + arr.length + left.length - 1,
             });
             steps.push({
-                type: ANIMATION_TYPES.HIGHLIGHT_SECONDARY,
+                type: ANIMATION_STEP_TYPES.HIGHLIGHT_SECONDARY,
                 index: startWindow + arr.length - 1,
             });
             steps.push({
-                type: ANIMATION_TYPES.MOVE,
+                type: ANIMATION_STEP_TYPES.MOVE,
                 fromIndex: startWindow + arr.length + left.length - 1,
                 toIndex: startWindow + arr.length - 1,
             });
@@ -48,14 +48,14 @@ export default function mergeSort(list: number[], animationProps: MergeSortAnima
     const half = Math.floor(list.length / 2);
     if (list.length < 2) {
         steps.push({
-            type: ANIMATION_TYPES.HIGHLIGHT_SECONDARY,
+            type: ANIMATION_STEP_TYPES.HIGHLIGHT_SECONDARY,
             index: startWindow,
         });
         return list;
     }
 
     steps.push({
-        type: ANIMATION_TYPES.HIGHLIGHT,
+        type: ANIMATION_STEP_TYPES.HIGHLIGHT,
         index: startWindow + half,
     });
 

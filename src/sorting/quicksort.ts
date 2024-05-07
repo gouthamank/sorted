@@ -1,6 +1,6 @@
 import { QuickSortAnimationProps } from '@/types/app/page.types';
 
-import { ANIMATION_TYPES } from '@/utils/enums';
+import { ANIMATION_STEP_TYPES } from '@/utils/enums';
 
 export default function quickSort(list: number[], animationProps: QuickSortAnimationProps): number[] {
     if (list.length <= 1) {
@@ -10,7 +10,7 @@ export default function quickSort(list: number[], animationProps: QuickSortAnima
 
     let pivot = list[0];
     steps.push({
-        type: ANIMATION_TYPES.HIGHLIGHT,
+        type: ANIMATION_STEP_TYPES.HIGHLIGHT,
         index: startWindow,
     });
     let leftArr = [];
@@ -20,22 +20,22 @@ export default function quickSort(list: number[], animationProps: QuickSortAnima
         if (list[i] < pivot) {
             leftArr.push(list[i]);
             steps.push({
-                type: ANIMATION_TYPES.HIGHLIGHT_SECONDARY,
+                type: ANIMATION_STEP_TYPES.HIGHLIGHT_SECONDARY,
                 index: startWindow + i,
             });
             steps.push({
-                type: ANIMATION_TYPES.MOVE,
+                type: ANIMATION_STEP_TYPES.MOVE,
                 fromIndex: startWindow + i,
                 toIndex: startWindow + leftArr.length - 1,
             });
         } else {
             rightArr.push(list[i]);
             steps.push({
-                type: ANIMATION_TYPES.HIGHLIGHT_SECONDARY,
+                type: ANIMATION_STEP_TYPES.HIGHLIGHT_SECONDARY,
                 index: startWindow + i,
             });
             steps.push({
-                type: ANIMATION_TYPES.MOVE,
+                type: ANIMATION_STEP_TYPES.MOVE,
                 fromIndex: startWindow + i,
                 toIndex: startWindow + leftArr.length + rightArr.length,
             });
@@ -43,7 +43,7 @@ export default function quickSort(list: number[], animationProps: QuickSortAnima
     }
 
     steps.push({
-        type: ANIMATION_TYPES.END_CYCLE,
+        type: ANIMATION_STEP_TYPES.END_CYCLE,
     });
 
     return [

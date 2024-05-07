@@ -1,6 +1,6 @@
 import { HeapSortAnimationProps } from '@/types/app/page.types';
 
-import { ANIMATION_TYPES } from '@/utils/enums';
+import { ANIMATION_STEP_TYPES } from '@/utils/enums';
 
 function heapify(heap: number[], i: number, heapSize: number, animationProps: HeapSortAnimationProps) {
     const { steps } = animationProps;
@@ -10,12 +10,12 @@ function heapify(heap: number[], i: number, heapSize: number, animationProps: He
     let largest = i;
 
     steps.push({
-        type: ANIMATION_TYPES.HIGHLIGHT_SECONDARY,
+        type: ANIMATION_STEP_TYPES.HIGHLIGHT_SECONDARY,
         index: left,
     });
 
     steps.push({
-        type: ANIMATION_TYPES.HIGHLIGHT_SECONDARY,
+        type: ANIMATION_STEP_TYPES.HIGHLIGHT_SECONDARY,
         index: right,
     });
 
@@ -27,12 +27,12 @@ function heapify(heap: number[], i: number, heapSize: number, animationProps: He
     }
     if (largest !== i) {
         steps.push({
-            type: ANIMATION_TYPES.MOVE,
+            type: ANIMATION_STEP_TYPES.MOVE,
             fromIndex: largest,
             toIndex: i,
         });
         steps.push({
-            type: ANIMATION_TYPES.MOVE,
+            type: ANIMATION_STEP_TYPES.MOVE,
             fromIndex: i + 1,
             toIndex: largest,
         });
@@ -47,7 +47,7 @@ function createHeap(list: number[], animationProps: HeapSortAnimationProps): num
     let heap = [...list];
     for (let i = Math.floor(heap.length / 2); i >= 0; i--) {
         steps.push({
-            type: ANIMATION_TYPES.HIGHLIGHT,
+            type: ANIMATION_STEP_TYPES.HIGHLIGHT,
             index: i,
         });
         heapify(heap, i, heap.length, animationProps);
@@ -62,12 +62,12 @@ export default function heapSort(list: number[], animationProps: HeapSortAnimati
     let sortedArray: number[] = [];
     while (heap.length > 0) {
         steps.push({
-            type: ANIMATION_TYPES.MOVE,
+            type: ANIMATION_STEP_TYPES.MOVE,
             fromIndex: 0,
             toIndex: list.length - sortedArray.length - 1,
         });
         steps.push({
-            type: ANIMATION_TYPES.HIGHLIGHT,
+            type: ANIMATION_STEP_TYPES.HIGHLIGHT,
             index: list.length - sortedArray.length - 1,
         });
         sortedArray.unshift(<number>heap.shift());
