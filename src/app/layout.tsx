@@ -1,10 +1,10 @@
 import React from 'react';
 import type { Metadata } from 'next';
-import { Chivo } from 'next/font/google';
+import { Red_Hat_Mono } from 'next/font/google';
 import './globals.css';
 import classNames from 'classnames';
 
-const inter = Chivo({ weight: '400', subsets: ['latin'] });
+const redHatMono = Red_Hat_Mono({ weight: '400', subsets: ['latin'] });
 
 export const metadata: Metadata = {
     title: 'Sorted',
@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang='en'>
-            <body className={classNames([inter.className])} style={{ minHeight: '100vh' }}>
+            <body className={classNames([redHatMono.className])} style={{ minHeight: '100vh' }}>
                 {children}
             </body>
         </html>
