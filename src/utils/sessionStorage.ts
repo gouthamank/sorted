@@ -13,13 +13,13 @@ export function getSavedFormData(): FormData {
     try {
         const storedData = sessionStorage.getItem('formData') || '{}';
         const formData = JSON.parse(storedData);
-        if (formData.size && !Object.keys(ARRAY_LENGTHS).includes(formData.size)) {
+        if (formData.size && !Object.values(ARRAY_LENGTHS).includes(formData.size)) {
             return {};
         }
-        if (formData.speed && !Object.keys(ANIMATION_SPEED).includes(formData.speed)) {
+        if (formData.speed && !Object.values(ANIMATION_SPEED).includes(formData.speed)) {
             return {};
         }
-        if (formData.sort && !Object.keys(SORT_TYPES).includes(formData.sort)) {
+        if (formData.sort && !Object.values(SORT_TYPES).includes(formData.sort)) {
             return {};
         }
         return formData;

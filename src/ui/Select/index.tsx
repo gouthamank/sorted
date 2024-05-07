@@ -14,6 +14,7 @@ export default function Select(props: SelectProps) {
                     'flex-grow': props.fullWidth,
                 },
             ])}
+            suppressHydrationWarning
         >
             <select
                 className={classNames([
