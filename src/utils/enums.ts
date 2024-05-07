@@ -3,6 +3,7 @@ export enum SORT_TYPES {
     'MERGESORT' = 'mergesort',
     'HEAPSORT' = 'heapsort',
     'BUBBLESORT' = 'bubblesort',
+    'SELECTIONSORT' = 'selectionsort',
 }
 
 export enum ARRAY_LENGTHS {

@@ -7,6 +7,7 @@ import quickSort from '@/sorting/quicksort';
 import mergeSort from '@/sorting/mergesort';
 import heapSort from '@/sorting/heapsort';
 import bubbleSort from '@/sorting/bubblesort';
+import selectionSort from '@/sorting/selectionsort';
 import { playAnimations } from '@/sorting/animations';
 import { getRandomInt } from '@/utils';
 import { ANIMATION_SPEED, ANIMATION_STATES, ANIMATION_STEP_TYPES, ARRAY_LENGTHS, SORT_TYPES } from '@/utils/enums';
@@ -59,12 +60,16 @@ export default function Home() {
             case SORT_TYPES.BUBBLESORT:
                 bubbleSort(listToSort, { steps });
                 break;
+            case SORT_TYPES.SELECTIONSORT:
+                selectionSort(listToSort, { steps });
+                break;
             default:
                 break;
         }
         steps.push({
             type: ANIMATION_STEP_TYPES.END_SORT,
         });
+        console.log('>> steps', steps);
         await playAnimations(sortSpeed, steps, setList, setAnimationState);
     }, [list, sortType, sortSpeed]);
 

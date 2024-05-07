@@ -13,7 +13,7 @@ export default function Node(props: NodeProps) {
             transitionCSS = `height 300ms ${props.nodeIndex * 10}ms`;
             break;
         case ANIMATION_STATES.RUNNING:
-            transitionCSS = `opacity 100ms`;
+            transitionCSS = ``;
             break;
         case ANIMATION_STATES.COMPLETED:
             transitionCSS = `opacity 300ms ${props.nodeIndex * 20}ms, background-color 300ms ${props.nodeIndex * 20}ms`;

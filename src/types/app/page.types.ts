@@ -41,3 +41,5 @@ export type MergeSortAnimationProps = AnimationProps & {
 export type HeapSortAnimationProps = AnimationProps;
 
 export type BubbleSortAnimationProps = AnimationProps;
+
+export type SelectionSortAnimationProps = AnimationProps;
