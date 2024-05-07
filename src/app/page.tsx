@@ -103,7 +103,6 @@ export default function Home() {
                     minHeight: 'calc(100vh - 10rem)',
                 }}
             >
-                {animationState}
                 <NodeContainer list={list} currentState={animationState} />
                 {/*{list.length}*/}
                 {/*<pre>{JSON.stringify(list, null, 4)}</pre>*/}

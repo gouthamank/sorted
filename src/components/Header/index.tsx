@@ -152,11 +152,11 @@ export default function Header(props: HeaderProps) {
                     className={classNames([
                         'header-bottom-row absolute z-[9999] flex w-full flex-col gap-4 px-5 pb-4 pt-0 transition-all duration-300 sm:flex-row sm:justify-between lg:hidden',
                         {
-                            'border-b-2 border-steel-blue-200 bg-steel-blue-100 opacity-100 dark:border-steel-blue-800 dark:bg-gray-900':
+                            'pointer-events-all border-b-2 border-steel-blue-200 bg-steel-blue-100 opacity-100 dark:border-steel-blue-800 dark:bg-gray-900':
                                 isMenuOpen,
                         },
                         {
-                            'opacity-0': !isMenuOpen,
+                            'pointer-events-none opacity-0': !isMenuOpen,
                         },
                     ])}
                 >
