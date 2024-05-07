@@ -34,20 +34,13 @@
 
 html,
 body {
-    font-size: 15px;
+    font-size: 14px;
 }
 
 @media (min-width: 580px) {
     html,
     body {
-        font-size: 13px;
-    }
-}
-
-@media (min-width: 1536px) {
-    html,
-    body {
-        font-size: 11px;
+        font-size: 16px;
     }
 }
 

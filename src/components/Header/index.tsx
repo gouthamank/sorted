@@ -104,6 +104,10 @@ export default function Header(props: HeaderProps) {
                             label: 'Heap Sort',
                             value: SORT_TYPES.HEAPSORT,
                         },
+                        {
+                            label: 'Bubble Sort',
+                            value: SORT_TYPES.BUBBLESORT,
+                        },
                     ]}
                     name='Sort'
                     disabled={sortInProgress}

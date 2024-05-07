@@ -6,6 +6,7 @@ import NodeContainer from '@/components/NodeContainer';
 import quickSort from '@/sorting/quicksort';
 import mergeSort from '@/sorting/mergesort';
 import heapSort from '@/sorting/heapsort';
+import bubbleSort from '@/sorting/bubblesort';
 import { playAnimations } from '@/sorting/animations';
 import { getRandomInt } from '@/utils';
 import { ANIMATION_SPEED, ANIMATION_STATES, ANIMATION_STEP_TYPES, ARRAY_LENGTHS, SORT_TYPES } from '@/utils/enums';
@@ -54,6 +55,9 @@ export default function Home() {
                 break;
             case SORT_TYPES.HEAPSORT:
                 heapSort(listToSort, { steps });
+                break;
+            case SORT_TYPES.BUBBLESORT:
+                bubbleSort(listToSort, { steps });
                 break;
             default:
                 break;

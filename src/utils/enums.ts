@@ -2,10 +2,11 @@ export enum SORT_TYPES {
     'QUICKSORT' = 'quicksort',
     'MERGESORT' = 'mergesort',
     'HEAPSORT' = 'heapsort',
+    'BUBBLESORT' = 'bubblesort',
 }
 
 export enum ARRAY_LENGTHS {
-    'SMALL' = '25',
+    'SMALL' = '30',
     'MEDIUM' = '50',
     'LARGE' = '75',
 }
