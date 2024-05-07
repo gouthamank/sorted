@@ -4,6 +4,7 @@ export enum SORT_TYPES {
     'HEAPSORT' = 'heapsort',
     'BUBBLESORT' = 'bubblesort',
     'SELECTIONSORT' = 'selectionsort',
+    'GNOMESORT' = 'gnomesort',
 }
 
 export enum ARRAY_LENGTHS {

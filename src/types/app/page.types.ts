@@ -6,6 +6,10 @@ export type GraphListItem = {
     isSecondaryHighlighted: boolean;
 };
 
+export type FormData = {
+    [key: string]: string;
+};
+
 export type AnimationStep =
     | {
           type: ANIMATION_STEP_TYPES.HIGHLIGHT | ANIMATION_STEP_TYPES.HIGHLIGHT_SECONDARY;
@@ -43,3 +47,5 @@ export type HeapSortAnimationProps = AnimationProps;
 export type BubbleSortAnimationProps = AnimationProps;
 
 export type SelectionSortAnimationProps = AnimationProps;
+
+export type GnomeSortAnimationProps = AnimationProps;

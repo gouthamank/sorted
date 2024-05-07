@@ -1,3 +1,5 @@
+import type { FormData } from '@/types/app/page.types';
+
 export type HeaderProps = {
     onRandomiseClicked: () => void;
     onSortClicked: () => void;
@@ -5,5 +7,5 @@ export type HeaderProps = {
     onArraySizeChanged: (fieldName: string, newArraySize: string) => void;
     onAnimationSpeedChanged: (fieldName: string, newAnimationSpeed: any) => void;
     sortInProgress: boolean;
-    headerFormState: { [key: string]: string };
+    headerFormState: FormData;
 };

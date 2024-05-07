@@ -115,6 +115,10 @@ export default function Header(props: HeaderProps) {
                             label: 'Selection Sort',
                             value: SORT_TYPES.SELECTIONSORT,
                         },
+                        {
+                            label: 'Gnome Sort',
+                            value: SORT_TYPES.GNOMESORT,
+                        },
                     ]}
                     fieldName='sort'
                     value={headerFormState['sort']}
