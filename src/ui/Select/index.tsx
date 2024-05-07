@@ -24,16 +24,17 @@ export default function Select(props: SelectProps) {
                         'w-full': props.fullWidth,
                     },
                 ])}
-                name={props.name}
+                name={props.fieldName}
                 disabled={props.disabled}
                 onChange={evt => {
                     if (!props.onChange) {
                         return;
                     }
 
-                    props.onChange(evt.target.value);
+                    props.onChange(props.fieldName, evt.target.value);
                 }}
                 multiple={false}
+                value={props.value}
             >
                 {props.items.map(item => {
                     return (

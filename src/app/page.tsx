@@ -21,6 +21,7 @@ export default function Home() {
     const [sortType, setSortType] = useState<SORT_TYPES>(SORT_TYPES.QUICKSORT);
     const [sortSpeed, setSortSpeed] = useState<ANIMATION_SPEED>(ANIMATION_SPEED.FAST);
     const [animationState, setAnimationState] = useState<ANIMATION_STATES>(ANIMATION_STATES.IDLE);
+    const [formState, setFormState] = useState<{ [key: string]: string }>({});
 
     const handleRandomise = useCallback(() => {
         setAnimationState(ANIMATION_STATES.IDLE);
@@ -72,19 +73,31 @@ export default function Home() {
         await playAnimations(sortSpeed, steps, setList, setAnimationState);
     }, [list, sortType, sortSpeed]);
 
-    const handleSortMethodChanged = useCallback((newSortMethod: SORT_TYPES) => {
+    const handleSortMethodChanged = useCallback((fieldName: string, newSortMethod: SORT_TYPES) => {
+        setFormState(form => ({
+            ...form,
+            [fieldName]: newSortMethod,
+        }));
         setSortType(newSortMethod);
     }, []);
 
     const handleArraySizeChanged = useCallback(
-        (newArraySizeStr: string) => {
+        (fieldName: string, newArraySizeStr: string) => {
+            setFormState(form => ({
+                ...form,
+                [fieldName]: newArraySizeStr,
+            }));
             setArrayLength(Number.parseInt(newArraySizeStr));
             handleRandomise();
         },
         [handleRandomise],
     );
 
-    const handleAnimationSpeedChanged = useCallback((newAnimationSpeed: ANIMATION_SPEED) => {
+    const handleAnimationSpeedChanged = useCallback((fieldName: string, newAnimationSpeed: ANIMATION_SPEED) => {
+        setFormState(form => ({
+            ...form,
+            [fieldName]: newAnimationSpeed,
+        }));
         setSortSpeed(newAnimationSpeed);
     }, []);
 
@@ -101,6 +114,7 @@ export default function Home() {
                 onSortMethodChanged={handleSortMethodChanged}
                 onArraySizeChanged={handleArraySizeChanged}
                 onAnimationSpeedChanged={handleAnimationSpeedChanged}
+                headerFormState={formState}
             />
             <main
                 style={{

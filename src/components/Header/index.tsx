@@ -13,6 +13,7 @@ export default function Header(props: HeaderProps) {
         onSortMethodChanged,
         onRandomiseClicked,
         onSortClicked,
+        headerFormState,
         sortInProgress,
     } = props;
     const [isMenuOpen, setMenuOpen] = useState(false);
@@ -47,9 +48,9 @@ export default function Header(props: HeaderProps) {
             <>
                 <Select
                     fullWidth
-                    onChange={newArraySize => {
+                    onChange={(fieldName, newArraySize) => {
                         setIsStaleSort(false);
-                        onArraySizeChanged(newArraySize);
+                        onArraySizeChanged(fieldName, newArraySize);
                     }}
                     items={[
                         {
@@ -65,7 +66,8 @@ export default function Header(props: HeaderProps) {
                             value: ARRAY_LENGTHS.LARGE,
                         },
                     ]}
-                    name='Size'
+                    fieldName='size'
+                    value={headerFormState['size']}
                     disabled={sortInProgress}
                 />
                 <Select
@@ -85,7 +87,8 @@ export default function Header(props: HeaderProps) {
                             value: ANIMATION_SPEED.SLOW,
                         },
                     ]}
-                    name='Speed'
+                    fieldName='speed'
+                    value={headerFormState['speed']}
                     disabled={sortInProgress}
                 />
                 <Select
@@ -113,12 +116,13 @@ export default function Header(props: HeaderProps) {
                             value: SORT_TYPES.SELECTIONSORT,
                         },
                     ]}
-                    name='Sort'
+                    fieldName='sort'
+                    value={headerFormState['sort']}
                     disabled={sortInProgress}
                 />
             </>
         );
-    }, [onAnimationSpeedChanged, onArraySizeChanged, onSortMethodChanged, sortInProgress]);
+    }, [onAnimationSpeedChanged, onArraySizeChanged, onSortMethodChanged, sortInProgress, headerFormState]);
 
     return (
         <header>

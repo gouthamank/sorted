@@ -1,9 +1,10 @@
 export type SelectProps = {
-    name?: string;
+    fieldName: string;
     items: SelectItem[];
-    onChange?: (value: string) => void;
+    onChange?: (name: string, value: string) => void;
     disabled?: boolean;
     fullWidth?: boolean;
+    value: string;
 };
 
 export type SelectItem = {
