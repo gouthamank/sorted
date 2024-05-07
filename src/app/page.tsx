@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import NodeContainer from '@/components/NodeContainer';
+import SortInfo from '@/components/SortInfo';
 import * as sortingAlgorithms from '@/sorting/algorithms';
 import { playAnimations } from '@/sorting/animations';
 import { getRandomInt } from '@/utils';
@@ -128,10 +129,12 @@ export default function Home() {
                     flexDirection: 'column',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    minHeight: 'calc(100vh - 10rem)',
+                    minHeight: 'calc(100vh - 5rem)',
+                    padding: '0 1.25rem',
                 }}
             >
                 <NodeContainer list={list} currentState={animationState} />
+                <SortInfo sortType={sortType} />
                 {/*{list.length}*/}
                 {/*<pre>{JSON.stringify(list, null, 4)}</pre>*/}
             </main>

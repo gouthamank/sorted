@@ -33,6 +33,7 @@ export default function Header(props: HeaderProps) {
     const handleResize = useCallback(() => {
         if (window.innerWidth >= 870) {
             setMenuOpen(false);
+            document.body.classList.remove('disable-scroll');
         }
     }, []);
 

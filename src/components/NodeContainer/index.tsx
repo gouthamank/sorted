@@ -10,7 +10,7 @@ export default function NodeContainer(props: NodeContainerProps) {
     const [windowHeight, setWindowHeight] = useState(0);
 
     const onResize = () => {
-        setWindowHeight(window.innerHeight);
+        setWindowHeight(Math.min(1100, window.innerHeight));
     };
 
     useEffect(() => {
