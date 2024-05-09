@@ -186,7 +186,7 @@ export default function Header(props: HeaderProps) {
                     { 'pointer-events-none opacity-0': !isMenuOpen },
                     { 'pointer-events-all opacity-100': isMenuOpen },
                 ])}
-                onClick={() => setMenuOpen(false)}
+                onClick={() => handleHamburgerClick()}
             />
         </header>
     );
